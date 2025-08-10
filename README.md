@@ -1,3 +1,3 @@
 # Portfolio
 
-Following the NextJS guide on [learning React](https://nextjs.org/learn/react-foundations/next-steps).
+Currently doing the learn tutorial [here](https://nextjs.org/learn/pages-router/create-nextjs-app-editing-the-page).
