@@ -6,8 +6,10 @@ export default function Home() {
   const projectsRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
 
-  const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
-    ref.current?.scrollIntoView({ behavior: "smooth" });
+  const scrollToSection = (ref: RecordingState.RefObject<HTMLDivElement>) => {
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
