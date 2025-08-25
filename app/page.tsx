@@ -1,11 +1,38 @@
+"use client"
+import { useRef } from "react";
+
 export default function Home() {
+  const aboutRef = useRef<HTMLDivElement>(null);
+  const projectsRef = useRef<HTMLDivElement>(null);
+  const contactRef = useRef<HTMLDivElement>(null);
+
+  const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen bg-gray-100 text-gray-900">
-      <div className="max-w-2xl text-center p-6">
-        <h1 className="text-4xl font-bold mb-4">Hi, I&apos;m Chris Wright</h1>
-        <p className="text-lg mb-6">I&apos;m a developer and creator. This is my portfolio built with Next.js and hosted on Vercel.</p>
-        <a href="mainto:jpchriswright@icloud.com" className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition">Get in touch</a>
-      </div>
-    </main>
+    <div className="flex min-h-screen">
+      {/* Sidebar */}
+      <nav className="w-48 bg-gray-900 text-white fixed h-full p-6 space-y-4">
+        <button onClick={() => scrollToSection(aboutRef)}>About Me</button>
+        <button onClick={() => scrollToSection(projectsRef)}>My Projects</button>
+        <button onClick={() => scrollToSection(contactRef)}>Contact Me</button>
+      </nav>
+
+      {/* Page Content */}
+      <main className="ml-48 flex-1">
+        <section ref={aboutRef} className="h-screen flex items-center justify-center bg-blue-200">
+          <h1 className="text-4xl">About Me</h1>
+        </section>
+        
+        <section ref={projectsRef} className="h-screen flex items-center justify-center bg-green-200">
+          <h1 className="text-4xl">Projects</h1>
+        </section>
+
+        <section ref={contactRef} className="h-screen flex items-center justify-center bg-yellow-200">
+          <h1 className="text-4xl">Contact</h1>
+        </section>
+      </main>
+    </div>
   );
 }
